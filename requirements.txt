@@ -15,6 +15,7 @@ pypinyin
 cn2an
 gradio
 av
+openai-whisper
 mecab-python3
 loguru
 unidic-lite
