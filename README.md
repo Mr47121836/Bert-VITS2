@@ -92,6 +92,7 @@ for dir_name in tqdm(os.listdir("./wav/")):
 ```
 ### 8.下载底模
 ```
+!mkdir -p ./logs/{train_name}
 !wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/DUR_0.pth -O ./logs/{train_name}/DUR_0.pth
 !wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/D_0.pth -O ./logs/{train_name}/D_0.pth
 !wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/G_0.pth -O ./logs/{train_name}/G_0.pth
