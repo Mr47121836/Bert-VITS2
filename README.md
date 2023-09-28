@@ -9,9 +9,10 @@ VITS2 Backbone with bert
 ## 使用方法
 ### 1.环境配置
 ```
-!git clone https://hub.njuu.cf/fishaudio/Bert-VITS2.git
+!git clone https://github.com/Mr47121836/Bert-VITS2.git
 %cd Bert-VITS2
 ```
+
 ```
 !pip install -r requirements.txt
 ```
@@ -19,18 +20,41 @@ VITS2 Backbone with bert
 ```
 train_name = "xss"
 ```
-### 3.下载数据集
+### 3.数据集准备
+#### 3.1 数据集下载
 ```
 !wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E7%94%B3%E9%B9%A4.zip -O ./wav/申鹤.zip
 !wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90.zip -O ./wav/八重神子.zip
 !wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E9%A6%99%E8%8F%B1.zip -o ./wav/香菱.zip
 ```
+#### 3.2数据集解压
 ```
 !unzip  -j ./wav/八重神子.zip "*.wav" -d ./wav/八重神子/
 !unzip  -j ./wav/申鹤.zip "*.wav" -d ./wav/申鹤/
 !unzip  -j ./wav/香菱.zip "*.wav" -d ./wav/香菱/
 ```
-### 4.删除多余数据
+#### 3.3 数据集格式
+```
+wav
+├───神里绫华
+├   ├───xxx.wav
+├   ├───...
+├   ├───yyy.mp3
+├   └───zzz.wav
+├───刻晴
+├   ├───xxx.wav
+├   ├───...
+├   ├───yyy.mp3
+├   └───zzz.wav
+├───...
+├
+└───钟离
+    ├───xxx.wav
+    ├───...
+    ├───yyy.wav
+    └───zzz.wav
+```
+### 4.重命名并删除多余数据，请设置keep_num的值
 ```
 import os
 from tqdm import tqdm
@@ -69,6 +93,7 @@ for dir_name in tqdm(os.listdir("./wav/")):
 !wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/D_0.pth -o ./logs/{train_name}/D_0.pth
 !wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/G_0.pth -o ./logs/{train_name}/G_0.pth
 !wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/pytorch_model.bin -o ./bert/chinese-roberta-wwm-ext-large/pytorch_model.bin
+!wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/medium.pt -o ./whisper_model/medium.pt
 ```
 ### 9. 生成bert.pt文件
 ```
@@ -78,6 +103,8 @@ for dir_name in tqdm(os.listdir("./wav/")):
 ```
 !python train_ms.py -c configs/config.json -m {train_name}
 ```
+## 线上使用
+
 ## References
 + [anyvoiceai/MassTTS](https://github.com/anyvoiceai/MassTTS)
 + [jaywalnut310/vits](https://github.com/jaywalnut310/vits)
