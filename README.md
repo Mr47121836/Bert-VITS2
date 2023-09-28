@@ -23,8 +23,8 @@ train_name = "xss"
 ### 3.数据集准备
 #### 3.1 数据集下载
 ```
-!wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E7%94%B3%E9%B9%A4.zip -O ./wav/申鹤.zip
-!wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90.zip -O ./wav/八重神子.zip
+!wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E7%94%B3%E9%B9%A4.zip -o ./wav/申鹤.zip
+!wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90.zip -o ./wav/八重神子.zip
 !wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E9%A6%99%E8%8F%B1.zip -o ./wav/香菱.zip
 ```
 #### 3.2数据集解压
