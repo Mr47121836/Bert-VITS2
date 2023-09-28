@@ -39,12 +39,12 @@ wav
 ├───神里绫华
 ├   ├───xxx.wav
 ├   ├───...
-├   ├───yyy.mp3
+├   ├───yyy.wav
 ├   └───zzz.wav
 ├───刻晴
 ├   ├───xxx.wav
 ├   ├───...
-├   ├───yyy.mp3
+├   ├───yyy.wav
 ├   └───zzz.wav
 ├───...
 ├
