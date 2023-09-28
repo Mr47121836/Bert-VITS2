@@ -59,7 +59,10 @@ wav
 import os
 from tqdm import tqdm
 # 每个说话人保留的语音条数
-keep_num = 500 
+keep_num = 500
+for dir_name in os.listdir("./wav"):
+  if dir_name.endswith("zip") or dir_name.endswith("md") :
+    os.remove(os.path.join("./wav",dir_name))
 
 for dir_name in tqdm(os.listdir("./wav/")):
     folder_path = './wav/' + dir_name
@@ -105,7 +108,7 @@ for dir_name in tqdm(os.listdir("./wav/")):
 !python train_ms.py -c configs/config.json -m {train_name}
 ```
 ## 线上使用
-
+推荐使用[Colab](https://colab.research.google.com/drive/1qPN_taeNU2GNPJl45mm5kQdEWqC-S3sc?usp=sharing)
 ## References
 + [anyvoiceai/MassTTS](https://github.com/anyvoiceai/MassTTS)
 + [jaywalnut310/vits](https://github.com/jaywalnut310/vits)
