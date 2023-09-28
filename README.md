@@ -74,6 +74,7 @@ for dir_name in tqdm(os.listdir("./wav/")):
 ```
 ### 5.标注音频并且进行重采样
 ```
+!wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/medium.pt -O ./whisper_model/medium.pt
 !python generate_filelist.py
 ```
 ### 6.生成音标文件并且划分训练集和验证集
