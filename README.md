@@ -6,6 +6,78 @@ VITS2 Backbone with bert
 ### 严禁用于任何政治相关用途。
 #### Video:https://www.bilibili.com/video/BV1hp4y1K78E
 #### Demo:https://www.bilibili.com/video/BV1TF411k78w
+## 使用方法
+### 1.环境配置
+```
+!git clone https://hub.njuu.cf/fishaudio/Bert-VITS2.git
+%cd Bert-VITS2
+```
+```
+!pip install -r requirements.txt
+```
+###  2.设置训练名称
+```
+train_name = "xss"
+```
+### 3.下载数据集
+```
+!wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E7%94%B3%E9%B9%A4.zip -O ./wav/申鹤.zip
+!wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90.zip -O ./wav/八重神子.zip
+!wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E9%A6%99%E8%8F%B1.zip -o ./wav/香菱.zip
+```
+```
+!unzip  -j ./wav/八重神子.zip "*.wav" -d ./wav/八重神子/
+!unzip  -j ./wav/申鹤.zip "*.wav" -d ./wav/申鹤/
+!unzip  -j ./wav/香菱.zip "*.wav" -d ./wav/香菱/
+```
+### 4.删除多余数据
+```
+import os
+from tqdm import tqdm
+# 每个说话人保留的语音条数
+keep_num = 500 
+
+for dir_name in tqdm(os.listdir("./wav/")):
+    folder_path = './wav/' + dir_name
+    num = 1
+    for file in tqdm(os.listdir(folder_path)):
+        if(num <= keep_num):
+            s = '%06d' % num  # 前面补零占位
+            os.rename(os.path.join(folder_path, file), os.path.join(folder_path, str(s) + '.wav'))
+        else:
+            os.remove(os.path.join(folder_path, file))
+        num += 1
+```
+### 5.标注音频并且进行重采样
+```
+!python generate_filelist.py
+```
+### 6.生成音标文件并且划分训练集和验证集
+```
+!python  preprocess_text.py
+```
+### 7.运行monotonic_align
+```
+%cd monotonic_align/
+!mkdir monotonic_align
+!python setup.py build_ext --inplace
+%cd ..
+```
+### 8.下载底模
+```
+!wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/DUR_0.pth -o ./logs/{train_name}/DUR_0.pth
+!wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/D_0.pth -o ./logs/{train_name}/D_0.pth
+!wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/G_0.pth -o ./logs/{train_name}/G_0.pth
+!wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/pytorch_model.bin -o ./bert/chinese-roberta-wwm-ext-large/pytorch_model.bin
+```
+### 9. 生成bert.pt文件
+```
+!python bert_gen.py
+```
+### 10.开始训练
+```
+!python train_ms.py -c configs/config.json -m {train_name}
+```
 ## References
 + [anyvoiceai/MassTTS](https://github.com/anyvoiceai/MassTTS)
 + [jaywalnut310/vits](https://github.com/jaywalnut310/vits)
@@ -16,3 +88,4 @@ VITS2 Backbone with bert
 <a href="https://github.com/fishaudio/Bert-VITS2/graphs/contributors" target="_blank">
   <img src="https://contrib.rocks/image?repo=fishaudio/Bert-VITS2" />
 </a>
+
