@@ -23,9 +23,9 @@ train_name = "xss"
 ### 3.数据集准备
 #### 3.1 数据集下载
 ```
-!wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E7%94%B3%E9%B9%A4.zip -o ./wav/申鹤.zip
-!wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90.zip -o ./wav/八重神子.zip
-!wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E9%A6%99%E8%8F%B1.zip -o ./wav/香菱.zip
+!wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E7%94%B3%E9%B9%A4.zip -O ./wav/申鹤.zip
+!wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90.zip -O ./wav/八重神子.zip
+!wget https://huggingface.co/datasets/guetLzy/genshin/resolve/main/%E9%A6%99%E8%8F%B1.zip -O ./wav/香菱.zip
 ```
 #### 3.2数据集解压
 ```
@@ -89,11 +89,11 @@ for dir_name in tqdm(os.listdir("./wav/")):
 ```
 ### 8.下载底模
 ```
-!wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/DUR_0.pth -o ./logs/{train_name}/DUR_0.pth
-!wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/D_0.pth -o ./logs/{train_name}/D_0.pth
-!wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/G_0.pth -o ./logs/{train_name}/G_0.pth
-!wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/pytorch_model.bin -o ./bert/chinese-roberta-wwm-ext-large/pytorch_model.bin
-!wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/medium.pt -o ./whisper_model/medium.pt
+!wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/DUR_0.pth -O ./logs/{train_name}/DUR_0.pth
+!wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/D_0.pth -O ./logs/{train_name}/D_0.pth
+!wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/G_0.pth -O ./logs/{train_name}/G_0.pth
+!wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/pytorch_model.bin -O ./bert/chinese-roberta-wwm-ext-large/pytorch_model.bin
+!wget https://huggingface.co/guetLzy/Bert-Vits2-PreWeight/resolve/main/medium.pt -O ./whisper_model/medium.pt
 ```
 ### 9. 生成bert.pt文件
 ```
