@@ -1,7 +1,7 @@
 librosa==0.9.1
 Cython==0.29.21
 matplotlib
-numpy
+numpy==1.22
 numba
 phonemizer
 scipy
