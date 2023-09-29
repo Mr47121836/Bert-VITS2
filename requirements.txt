@@ -8,6 +8,7 @@ scipy
 tensorboard
 torch
 torchvision
+torchaudio
 Unidecode
 amfm_decompy
 jieba
