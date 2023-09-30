@@ -6,9 +6,9 @@ import argparse
 import torch
 
 lang2token = {
-            'zh': "[ZH]",
-            'ja': "[JA]",
-            "en": "[EN]",
+            'zh': "ZH",
+            'ja': "JA",
+            "en": "EN",
         }
 def transcribe_one(audio_path):
     # load audio and pad/trim it to fit 30 seconds
@@ -49,6 +49,10 @@ if __name__ == "__main__":
     elif args.languages == "C":
         lang2token = {
             'zh': "ZH",
+        }
+    elif args.languages == "J":
+        lang2token = {
+            'ja': "JA",
         }
     assert (torch.cuda.is_available()), "Please enable GPU in order to run Whisper!"
     model = whisper.load_model(args.whisper_size)
